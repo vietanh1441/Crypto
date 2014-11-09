@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-	FILE *in;
+	/*FILE *in;
 	int i;
 	int array[16];
 	for(i=0;i<10;i++)
@@ -27,6 +27,17 @@ int main(int argc, char *argv[])
 		fprintf(stdout, "%d \n", array[i]);
 	}
 	
-	fclose(in);
+	fclose(in);*/
+	
+	char* c1 = "hello";
+	char* c2 = "therr";
+	char* c3;
+	
+	c3 = char_xor(c1, c2);
+	fprintf(stdout, "%s", c3);
+	
+	c3 = char_xor(c3, c2); 
+	fprintf(stdout, "%s", c3);
+	getchar();
 	return 0;
 }

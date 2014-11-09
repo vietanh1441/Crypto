@@ -72,7 +72,7 @@ char* char_xor(char* msg, char* key)
 	//char* out = hex_xor(msghex, keyhex);
 	
 	//out = hex_decode(out);
-	int len = strlen(msg) + 1;
+	len = strlen(msg) + 1;
 	char* out = malloc(len*sizeof(char));
 	int i;
 	for(i=0; i<strlen(msg); i++)
