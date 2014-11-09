@@ -9,7 +9,6 @@
 
 void read_file(FILE **in);
 int max_index(int array[]);
-void find_freq(FILE *in);
-void find_freq(FILE *in, int hex);
+void find_freq(FILE *in, int hex, int* array);
 
 #endif /*FREQ_ANALYZE_H*/

@@ -63,7 +63,7 @@ int max_index(int array[])
 	
 }*/
 
-void find_freq(FILE *in, int hex)
+void find_freq(FILE *in, int hex, int array[])
 {
 	
 	char string[1024];
@@ -75,7 +75,7 @@ void find_freq(FILE *in, int hex)
 		}
 	if(hex==1){
 		while (fscanf(in, "%s", string) != EOF) {
-	  		fprintf(stdout, "%s\n", string);
+	  		//fprintf(stdout, "%s\n", string);
 	  		hex_string = check_hex(string);
 	  		hex_string = hex_decode(hex_string);
 	  		for(i=0; i<strlen(hex_string); i++){
@@ -85,15 +85,22 @@ void find_freq(FILE *in, int hex)
 		}	
 	}else{
 		while (fscanf(in, "%s", string) != EOF) {
-  		fprintf(stdout, "%s\n", string);
+  		//fprintf(stdout, "%s\n", string);
   		for(i=0; i<strlen(string); i++){
   			char_table[(int)string[i]]++;
   		} 
-	}	;
-	j = max_index(char_table);
-	fprintf(stdout, "max number is:%d, %c, in %d times \n", j, (char)j, char_table[j]);
+	}
+	}	
 	
-}
+	//Now that we have all char_table, find the 10 max char and put t in array
+	for(i=0; i<10;i++){
+		j = max_index(char_table);
+		fprintf(stdout, "max number is:%d, %c, in %d times \n", j, (char)j, char_table[j]);
+		char_table[j] = 0;
+		array[i] = j;
+	}
+	
+	return;
 }
 
 /*int main()
