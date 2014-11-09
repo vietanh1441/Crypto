@@ -114,7 +114,7 @@ char* hex_encode(char* in)
 int hex2int(char *a)
 {
     char *offset; 
- 	return strtol(hexStr, &offset, 16);
+ return strtol(hexStr, &offset, 16);
 }
 
 //Functions to directly convert Hex to base64

@@ -1,0 +1,1 @@
+The TEACH web server ran out of disk space Friday around 5:15pm.  We resolved it Saturday morning around 9:30.  Assignment submissions failed in the intervening time.
