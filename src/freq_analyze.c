@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <math.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include "freq_analyze.h"
+#include "base_conversion.h"
 
 /*This file try to analyze file and look for chars with highest frequency
  *Algorithm:
@@ -47,7 +44,7 @@ int max_index(int array[])
 }
 
 //Find the highest frequency char
-void find_freq(FILE *in)
+/*void find_freq(FILE *in)
 {
 	char string[1024];
 	int i,j;
@@ -63,12 +60,43 @@ void find_freq(FILE *in)
 	}	
 	j = max_index(char_table);
 	fprintf(stdout, "max number is:%d, %c, in %d times \n", j, (char)j, char_table[j]);
-	//for(i=0;i<256;i++){
-		//fprintf(stdout, " %d \n", char_table[i]);
-		//}
+	
+}*/
+
+void find_freq(FILE *in, int hex)
+{
+	
+	char string[1024];
+	char* hex_string;
+	int i,j;
+	int char_table[256];
+	for(i=0;i<256;i++){
+		char_table[i] = 0;
+		}
+	if(hex==1){
+		while (fscanf(in, "%s", string) != EOF) {
+	  		fprintf(stdout, "%s\n", string);
+	  		hex_string = check_hex(string);
+	  		hex_string = hex_decode(hex_string);
+	  		for(i=0; i<strlen(hex_string); i++){
+	  			char_table[(int)hex_string[i]]++;
+	  		} 
+	  		free(hex_string);
+		}	
+	}else{
+		while (fscanf(in, "%s", string) != EOF) {
+  		fprintf(stdout, "%s\n", string);
+  		for(i=0; i<strlen(string); i++){
+  			char_table[(int)string[i]]++;
+  		} 
+	}	;
+	j = max_index(char_table);
+	fprintf(stdout, "max number is:%d, %c, in %d times \n", j, (char)j, char_table[j]);
+	
+}
 }
 
-int main()
+/*int main()
 {
 	FILE *in;
 	int high_freq[10];
@@ -81,9 +109,9 @@ int main()
 	//fgets (file,1024, stdin);
 	//printf("%s" , file);
 	
-	find_freq(in);
+	find_freq(in,1);
 	
 	fclose(in);
 
 	return 0;
-}
+}*/
